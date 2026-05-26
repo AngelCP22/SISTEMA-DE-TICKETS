@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mapeo TI - Tickets TI</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style-extras.css">
+  <link rel="stylesheet" href="css/style-v7.css">
+</head>
+<body>
+  <div style="max-width:1300px;margin:0 auto;">
+    <div class="metrics-row" style="margin-bottom:1.25rem;" id="cmdbMetrics">
+      <div class="metric-card proceso"><div class="metric-label">Usuarios</div><div class="metric-value">-</div><div class="metric-icon">Usuarios</div></div>
+      <div class="metric-card atendido"><div class="metric-label">Equipos</div><div class="metric-value">-</div><div class="metric-icon">PC</div></div>
+      <div class="metric-card pendiente"><div class="metric-label">Accesos</div><div class="metric-value">-</div><div class="metric-icon">Accesos</div></div>
+      <div class="metric-card alta"><div class="metric-label">Riesgos abiertos</div><div class="metric-value">-</div><div class="metric-icon">Riesgos</div></div>
+    </div>
+    <div class="panel" style="margin-bottom:1rem;">
+      <div class="panel-head">
+        <span class="panel-title">Mapeo TI dinamico</span>
+        <button class="btn btn-secondary btn-sm" id="btnInitCMDB">Inicializar hojas</button>
+      </div>
+      <div class="panel-body">
+        <p class="muted-small">Registra y cruza usuarios, cuentas, equipos, moviles y perifericos. Todo se guarda en Google Sheets y las columnas nuevas se crean automaticamente.</p>
+        <div class="cmdb-tabs" id="cmdbTabs"></div>
+        <div class="filters-bar">
+          <div class="form-group" style="flex:2;"><label>Buscar</label><input id="cmdbSearch" placeholder="Nombre, hostname, IP, serial, area, sistema"></div>
+          <div class="filter-actions"><button class="btn btn-secondary btn-sm" id="btnRefreshCMDB">Actualizar</button><button class="btn btn-primary btn-sm" id="btnNewCMDB">Nuevo</button></div>
+        </div>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="panel">
+        <div class="panel-head"><span class="panel-title" id="cmdbFormTitle">Registro</span></div>
+        <div class="panel-body"><form id="cmdbForm" class="cmdb-form"></form></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><span class="panel-title">Mapa por usuario</span></div>
+        <div class="panel-body">
+          <div class="filters-bar" style="padding:0;border:0;">
+            <div class="form-group" style="flex:2;"><label>ID usuario, nombre o correo</label><input id="mapUserInput" placeholder="USR-001 / Juan Perez / correo"></div>
+            <div class="filter-actions"><button class="btn btn-secondary btn-sm" id="btnMapUser">Ver mapa</button></div>
+          </div>
+          <div id="mapUserResult" class="map-grid" style="margin-top:1rem;"></div>
+        </div>
+      </div>
+    </div>
+    <div class="panel" style="margin-top:1rem;">
+      <div class="panel-head"><span class="panel-title" id="cmdbTableTitle">Registros</span><span class="muted" id="cmdbCount"></span></div>
+      <div class="table-wrap"><table class="tickets-table"><thead id="cmdbThead"></thead><tbody id="cmdbTbody"></tbody></table></div>
+    </div>
+  </div>
+  <script src="js/config.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/extras.js"></script>
+  <script src="js/mapeo-ti.js"></script>
+</body>
+</html>
